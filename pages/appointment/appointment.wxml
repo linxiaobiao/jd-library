@@ -1,0 +1,28 @@
+<import src="../../components/noData/noData"></import>
+<page>
+    <scroll-view bindscroll="scroll" bindscrolltolower="ForReachBottom" class="my-order-viewport" scrollTop="{{scrollTop}}" scrollX="false" scrollY="true" style="height:{{screenHeight-51}}px;" wx:if="{{firstHasData}}">
+        <view class="appointment-page">
+            <view bindtap="beWareDetail" class="appointment-list" data-skuid="{{item.sku}}" wx:for="{{appointmentList}}">
+                <view class="product-img">
+                    <image src="{{item.imageurl}}"></image>
+                </view>
+                <view class="product-con">
+                    <view class="product-title"> {{item.wareName?item.wareName:''}}</view>
+                    <view class="product-price">
+                        <text class="small-txt">￥</text>
+                        <text class="price-num">{{item.wareName?item.jdPrice:'暂无报价'}}</text>
+                    </view>
+                    <view class="start-time">{{item.preSellBeginTime?'开始时间： '+item.preSellBeginTime:'开抢时间待定，敬请关注！'}}</view>
+                    <view class="status-btn" wx:if="{{item.preSellStatus==0}}">正在抢购</view>
+                    <view class="status-btn" wx:elif="{{item.preSellStatus==-1}}">等待抢购</view>
+                    <view class="status-btn" wx:elif="{{item.preSellStatus==1}}">抢购结束</view>
+                    <view class="status-btn" wx:else>等待抢购</view>
+                </view>
+            </view>
+            <image bindtap="toTopTap" class="bottom-to-top" src="http://commonst.360buyimg.com/common/wx-images/scroll-to-top-icon.png" style="display:{{toTopDisplay}}"></image>
+            <view class="no-more" style="display:{{noMore?'flex':none}}">没有更多了</view>
+            <button class="more-loading" loading="true" style="display:{{moreLoading?'flex':none}}">加载中</button>
+        </view>
+    </scroll-view>
+    <template is="noMoreData" data="{{...noAppointmentItem}}" wx:else></template>
+</page>

@@ -1,0 +1,277 @@
+@import "../../components/JKPTab/JKPTab.wxss";
+
+.rank-list-scroll {
+    background-color: #f0f2f5;
+}
+
+.rank-list-tab-wrap {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #e3e5e9;
+    border-bottom: 1px solid #e3e5e9;
+    background-color: #fff;
+    position: relative;
+    z-index: 10;
+}
+
+.rank-list-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.rank-list-tab-border {
+    width: 100%;
+    height: 15px;
+    font-size: 0;
+    text-align: center;
+    border-right: 1px solid #e3e5e9;
+}
+
+.rank-list-tab-icon {
+    display: inline-block;
+    background: url(http://commonst.360buyimg.com/common/wx-images/book-ranklist-tab.png) no-repeat;
+    background-size: 32px 32px;
+    margin-right: 10px;
+    background-position: 0 0;
+    vertical-align: top;
+}
+
+.rank-list-tab-icon.hot-sale {
+    width: 15px;
+    height: 15px;
+    background-position: 0 0;
+}
+
+.rank-list-tab-icon.new-book {
+    width: 13px;
+    height: 15px;
+    background-position: 0 -16px;
+}
+
+.rank-list-tab-title {
+    display: inline-block;
+    font-size: 15px;
+    line-height: 15px;
+    color: #232326;
+    text-align: center;
+    vertical-align: top;
+}
+
+.rank-list-tab.selected .rank-list-tab-icon.hot-sale {
+    background-position: -16px 0;
+}
+
+.rank-list-tab.selected .rank-list-tab-icon.new-book {
+    background-position: -16px -16px;
+}
+
+.rank-list-tab.selected .rank-list-tab-title {
+    color: #f02b2b;
+}
+
+.tab-fixed {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+}
+
+.tab-mask {
+    background-color: #000;
+    opacity: 0.4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+.list-updata-tip {
+    width: 100%;
+    height: 70rpx;
+    background-color: #b1e1ff;
+    opacity: 0.9;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.updata-tip-icon {
+    background: url(http://commonst.360buyimg.com/common/wx-images/book-ranklist-tip.png) 0 0 no-repeat;
+    background-size: 22rpx 30rpx;
+    width: 22rpx;
+    height: 30rpx;
+    display: inline-block;
+    margin-right: 20rpx;
+}
+
+.updata-tip-text {
+    display: inline-block;
+    color: #4d87c7;
+    font-size: 24rpx;
+}
+
+.rank-list-item {
+    display: flex;
+    position: relative;
+    background-color: #fff;
+}
+
+.rank-list-pdt-ranking {
+    position: absolute;
+    top: 0;
+    left: 20rpx;
+}
+
+.rank-list-pdt-ranking-num {
+    width: 30rpx;
+    height: 26rpx;
+    font-size: 22rpx;
+    text-align: center;
+    padding-top: 6rpx;
+}
+
+.rank-list-pdt-ranking.red .rank-list-pdt-ranking-num {
+    background-color: #f02b2b;
+    color: #fff;
+}
+
+.rank-list-pdt-ranking.grey .rank-list-pdt-ranking-num {
+    background-color: #999;
+    color: #fff;
+}
+
+.rank-list-pdt-ranking-tri {
+    width: 0;
+    height: 0;
+    border-left: 15rpx solid transparent;
+    border-right: 15rpx solid transparent;
+}
+
+.rank-list-pdt-ranking.red .rank-list-pdt-ranking-tri {
+    border-top: 7rpx solid #f02b2b;
+}
+
+.rank-list-pdt-ranking.grey .rank-list-pdt-ranking-tri {
+    border-top: 7rpx solid #999;
+}
+
+.rank-list-pdt-img {
+    width: 210rpx;
+    height: 210rpx;
+    margin-right: 20rpx;
+}
+
+.rank-list-pdt-info {
+    flex: 1;
+    height: 210rpx;
+    padding-bottom: 20rpx;
+    padding-right: 50rpx;
+    border-bottom: 1rpx solid #e3e5e9;
+}
+
+.rank-list-pdt-title {
+    font-size: 26rpx;
+    color: #232326;
+    line-height: 36rpx;
+    height: 72rpx;
+    margin-top: 18rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.rank-list-pdt-promotion {
+    font-size: 22rpx;
+    color: #f23030;
+    line-height: 40rpx;
+    height: 40rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.rank-list-pdt-price {
+    color: #232326;
+    font-size: 30rpx;
+    line-height: 36rpx;
+    margin-top: 7rpx;
+}
+
+.rank-list-pdt-price-int {
+    display: inline;
+    font-size: 36rpx;
+}
+
+.rank-list-pdt-sale-index {
+    display: inline-flex;
+    font-size: 0;
+    margin-top: 10rpx;
+    height: 28rpx;
+    box-sizing: border-box;
+    border: 1rpx solid #f23030;
+    vertical-align: top;
+}
+
+.rank-list-pdt-sale-index-text {
+    display: inline-block;
+    width: 108rpx;
+    height: 26rpx;
+    font-size: 22rpx;
+    color: #fff;
+    line-height: 26rpx;
+    background-color: #f23030;
+    text-align: center;
+}
+
+.rank-list-pdt-sale-index-num {
+    display: inline-block;
+    font-size: 22rpx;
+    color: #f23030;
+    min-width: 70rpx;
+    height: 26rpx;
+    line-height: 26rpx;
+    background-color: transparent;
+    text-align: center;
+    padding: 0 11rpx;
+}
+
+.product-nomore {
+    position: relative;
+    height: 50rpx;
+    text-align: center;
+    margin: 0 20rpx;
+    padding: 44rpx 0;
+}
+
+.product-nomore::after {
+    content: "";
+    height: 2rpx;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background-color: #cbcbcb;
+    transform: scaleY(0.5);
+}
+
+.product-nomore-text {
+    display: inline-block;
+    padding: 0 40rpx;
+    background-color: #f0f2f5;
+    z-index: 3;
+    font-size: 28rpx;
+    line-height: 50rpx;
+    color: #848689;
+    position: relative;
+}

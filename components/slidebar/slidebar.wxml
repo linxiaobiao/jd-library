@@ -1,0 +1,23 @@
+<template name="mask">
+    <view bindtap="back" class="mask" wx:if="{{bAll}}"></view>
+</template>
+<template name="slidebar">
+    <view class="prod-slidebar-box">
+        <view bindtap="showAllMenus" class="prod-slidebar" wx:if="{{!bAll}}">
+            <i class="i"></i>
+            <view class="tip">快速导航</view>
+        </view>
+        <block wx:if="{{bAll}}">
+            <view bindtap="back" class="prod-slidebar-back">
+                <i class="i"></i>
+            </view>
+            <view class="prod-slidebar-cont">
+                <view bindtap="gotoTab" class="prod-slidebar-item" data-pageid="{{item.pageId}}" data-path="{{item.pagePath}}" wx:for="{{slidebarData}}">
+                    <image class="img" mode="aspectFit" src="{{item.iconPath}}"></image>
+                    <view>{{item.text}}</view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view bindtap="back" class="mask" wx:if="{{bAll}}"></view>
+</template>

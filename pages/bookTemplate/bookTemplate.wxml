@@ -1,0 +1,23 @@
+<template name="confirm">
+    <view bindtap="cancelHook" class="jdc-confirm" wx:if="{{visible}}">
+        <view class="jdc-confirm__content">
+            <view class="jdc-confirm__title">{{title}}</view>
+            <view class="jdc-confirm__body">{{message}}</view>
+            <view class="jdc-confirm__footer">
+                <view class="jdc-confirm__btnwrap">
+                    <view bindtap="cancelHook" class="jdc-confirm__btn">{{leftTxt}}</view>
+                    <view bindtap="submitHook" class="jdc-confirm__btn red">{{rightTxt}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="search">
+    <view class="search-box {{bfocus?'focus':''}} {{type==1?'whitebg':''}}">
+        <image class="search-icon"></image>
+        <input bindconfirm="search" bindfocus="setFocus" bindinput="inputText" confirmType="search" focus="{{bfocus?true:false}}" name="" placeholder="今天想读点什么？" placeholderClass="placeholder-text" type="text" value="{{text}}"></input>
+        <view bindtap="gotoSearch" class="mask" wx:if="{{!bable}}"></view>
+        <image bindtap="clearText" class="clear-icon" style="display: {{bfocus&&text?'block':'none'}};"></image>
+        <view bindtap="cancel" class="search-btn">取消</view>
+    </view>
+</template>

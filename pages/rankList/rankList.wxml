@@ -1,0 +1,41 @@
+<import src="../../components/JKPTab/JKPTab.wxml"></import>
+<view class="tab-fixed" style="transform: translateY({{tabTranslateY}}px); transition: 0.5s ease 0s;">
+    <view bindtap="handleRankListTab" class="rank-list-tab-wrap">
+        <view class="rank-list-tab {{item.rankId==rankListTab.selectedRankId?'selected':''}}" data-rank-id="{{item.rankId}}" wx:for="{{rankListTab.list}}">
+            <view class="rank-list-tab-border">
+                <view class="rank-list-tab-icon {{item.iconName}}" data-rank-id="{{item.rankId}}"></view>
+                <view class="rank-list-tab-title" data-rank-id="{{item.rankId}}">{{item.title}}</view>
+            </view>
+        </view>
+    </view>
+    <template is="JKPTab" data="{{...tabData}}"></template>
+    <view class="list-updata-tip" style="display: {{updataTipShow?'flex':'none'}}">
+        <view class="updata-tip-icon"></view>
+        <view class="updata-tip-text">{{topPrompt}}</view>
+    </view>
+</view>
+<scroll-view bindscroll="listScroll" class="rank-list-scroll" enableBackToTop="true" scrollTop="{{scrollTop}}" scrollY="true" style="height:{{screenHeight}}px">
+    <view bindtap="handleTabMask" class="tab-mask" style="display:{{tabData.tab.menuStatus=='open'?'block':'none'}}"></view>
+    <view style="height:46px;"></view>
+    <view style="height:74rpx;"></view>
+    <view bindtap="goToProduct" class="rank-list-item" data-idx="{{idx}}" data-wareid="{{item.wareId}}" wx:for="{{rankInfo}}" wx:for-index="idx">
+        <view class="rank-list-pdt-ranking {{item.currentRank<4?'red':'grey'}}">
+            <view class="rank-list-pdt-ranking-num">{{item.currentRank}}</view>
+            <view class="rank-list-pdt-ranking-tri"></view>
+        </view>
+        <image class="rank-list-pdt-img" src="{{item.imgPath}}"></image>
+        <view class="rank-list-pdt-info">
+            <view class="rank-list-pdt-title">{{item.wareName}}</view>
+            <view class="rank-list-pdt-promotion">{{item.priorityLabel[5]}}</view>
+            <view class="rank-list-pdt-price">¥
+        <view class="rank-list-pdt-price-int">{{item.jdPriceStart}}</view>.{{item.jdPriceEnd}}</view>
+            <view class="rank-list-pdt-sale-index">
+                <view class="rank-list-pdt-sale-index-text">销售指数</view>
+                <view class="rank-list-pdt-sale-index-num">{{item.productValue.hotScore}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="product-nomore">
+        <view class="product-nomore-text">我是有底线的</view>
+    </view>
+</scroll-view>

@@ -1,0 +1,4 @@
+<view wx:if="{{canIUse}}">
+    <web-view src="{{h5Url}}"></web-view>
+</view>
+<view class="web-view-compatibility" wx:else>请更新微信APP</view>

@@ -1,0 +1,19 @@
+<import src="../bookTemplate/bookTemplate.wxml"></import>
+<view class="content">
+    <template is="search" data="{{...searchdata}}"></template>
+    <view class="category-box">
+        <view class="category-super">
+            <view bindtap="supertabClick" class="super-tab {{superCurIndex==index?'super-tab-active':''}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{superList}}" wx:key="{{index}}">{{item.name}}</view>
+        </view>
+        <view class="category-tab">
+            <view bindtap="showCurrTab" class="category-tab-item {{curTabId==idx?'curr':''}}" data-cid="{{item.cid}}" data-id="{{idx}}" wx:if="{{item.name!=''}}" wx:for="{{categoryList}}" wx:for-index="idx" wx:key="tabs">
+                <view class="tab-item-txt">{{item.name}}</view>
+            </view>
+        </view>
+        <view class="category-content">
+            <view class="category-content-list {{curTabId==idx?'curr':''}}" wx:for="{{categoryList}}" wx:for-index="idx" wx:key="list">
+                <view bindtap="gotoSearchList" class="category-content-item" data-cid="{{childitem.cid}}" data-name="{{childitem.name}}" data-path="{{childitem.path}}" wx:if="{{childitem.name!=''}}" wx:for="{{item.catelogyList}}" wx:for-index="childidx" wx:for-item="childitem" wx:key="item">{{childitem.name}}</view>
+            </view>
+        </view>
+    </view>
+</view>

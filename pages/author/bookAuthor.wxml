@@ -1,0 +1,8 @@
+<template name="bookAuthor">
+    <view class="prod-author bdr-t" wx:if="{{wareInfo&&wareInfo.ware&&wareInfo.ware.bookInfo&&wareInfo.ware.bookInfo.author}}">
+        <text class="part-note-msg">作者</text>
+        <view class="base-txt">{{wareInfo.ware.bookInfo.author}}</view>
+        <view bindtap="getMoreWorklist" class="more-worklist" data-author="{{wareInfo.ware.bookInfo.author}}" data-wareid="{{wareInfo.ware.wareId}}">更多作品<view class="icon-arrow icon-arrow-right"></view>
+        </view>
+    </view>
+</template>

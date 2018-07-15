@@ -1,0 +1,100 @@
+.prod-slidebar-box {
+    z-index: 9999;
+    position: fixed;
+    right: 0;
+    bottom: 10%;
+}
+
+.prod-slidebar {
+    position: relative;
+    width: 100rpx;
+    height: 86rpx;
+    background: rgba(41,41,41,0.8);
+    border-top-left-radius: 45rpx;
+    border-bottom-left-radius: 45rpx;
+    font-size: 22rpx;
+    color: #FFF;
+}
+
+.prod-slidebar .i {
+    position: absolute;
+    left: 16rpx;
+    top: 32rpx;
+    width: 0;
+    height: 0;
+    border-right: 10rpx solid #fff;
+    border-top: 12rpx solid transparent;
+    border-bottom: 12rpx solid transparent;
+}
+
+.prod-slidebar .tip {
+    font-family: 'simsun';
+    position: absolute;
+    width: 50rpx;
+    height: 50rpx;
+    right: 12rpx;
+    top: 16rpx;
+    line-height: 28rpx;
+}
+
+.prod-slidebar-back {
+    position: absolute;
+    width: 45rpx;
+    height: 86rpx;
+    background: rgba(41,41,41,0.8);
+    border-top-left-radius: 45rpx;
+    border-bottom-left-radius: 45rpx;
+    font-size: 22rpx;
+    color: #FFF;
+    left: -45rpx;
+    bottom: 10rpx;
+}
+
+.prod-slidebar-back .i {
+    position: absolute;
+    left: 22rpx;
+    top: 31rpx;
+    width: 0;
+    height: 0;
+    border-left: 10rpx solid #fff;
+    border-top: 12rpx solid transparent;
+    border-bottom: 12rpx solid transparent;
+}
+
+.prod-slidebar-cont {
+    z-index: 1000;
+    background: #fff;
+    margin-right: 1rpx;
+    font-size: 22rpx;
+    color: rgb(35,35,38);
+    width: 108rpx;
+    text-align: center;
+    border-radius: 6rpx;
+    box-shadow: -4rpx -1rpx 20rpx rgba(0,0,0,0.24);
+}
+
+.prod-slidebar-item {
+    height: 90rpx;
+    border-bottom: 1rpx solid #efefef;
+}
+
+.prod-slidebar-item:last-child {
+    border-bottom: 0;
+}
+
+.prod-slidebar-cont .img {
+    display: inline-block;
+    width: 30rpx;
+    height: 30rpx;
+    margin-top: 16rpx;
+}
+
+.mask {
+    z-index: 999;
+    background: rgba(0,0,0,0.45);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}

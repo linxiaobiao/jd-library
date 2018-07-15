@@ -1,0 +1,14 @@
+page {
+    height: 100%;
+}
+
+view,text {
+    font-family: Arial,Helvetica,sans-serif;
+}
+
+.content {
+    position: relative;
+    background-color: #f7f4f3;
+    height: 100%;
+    overflow: hidden;
+}

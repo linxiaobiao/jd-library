@@ -1,0 +1,92 @@
+{
+    "pages": [
+        "pages/recommend/recommend",
+        "pages/activityH5/activityH5",
+        "pages/buyingDetails/buyingDetails",
+        "pages/ftproduct/ftproduct",
+        "pages/payment/payment",
+        "pages/category/category",
+        "pages/product/product",
+        "pages/searchlist/searchlist",
+        "pages/personal/personal",
+        "pages/pay/pay",
+        "pages/order/order",
+        "pages/address/address",
+        "pages/orderDetail/orderDetail",
+        "pages/orderTrack/orderTrack",
+        "pages/login-receive/login-receive",
+        "pages/login/login",
+        "pages/protocolTxt/protocolTxt",
+        "pages/distribution/distribution",
+        "pages/coupon/coupon",
+        "pages/coupon/allCoupon",
+        "pages/coupon/getCoupon/getCoupon",
+        "pages/addressul/addressul",
+        "pages/assess/assess",
+        "pages/error/error",
+        "pages/myFeedback/myFeedback",
+        "pages/orderSubmitSuccess/orderSubmitSuccess",
+        "pages/chooseaddress/chooseaddress",
+        "pages/cart/cart",
+        "pages/chat/chat",
+        "pages/upgrade/upgrade",
+        "pages/rankList/rankList",
+        "pages/facture/facture",
+        "pages/piecelist/piecelist",
+        "pages/service/service",
+        "pages/accountBind/accountBind",
+        "pages/appointment/appointment",
+        "pages/venderListH5/venderListH5",
+        "pages/wxappBridge/wxappBridge"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "white",
+        "backgroundTextStyle": "dark",
+        "enablePullDownRefresh": true
+    },
+    "tabBar": {
+        "color": "#333333",
+        "selectedColor": "#f04848",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "pages/recommend/recommend",
+                "text": "首页",
+                "iconPath": "images/index.png",
+                "selectedIconPath": "images/index_seled.png"
+            },
+            {
+                "pagePath": "pages/category/category",
+                "text": "找书",
+                "iconPath": "images/category.png",
+                "selectedIconPath": "images/category_seled.png"
+            },
+            {
+                "pagePath": "pages/rankList/rankList",
+                "text": "排行榜",
+                "iconPath": "images/ranklist.png",
+                "selectedIconPath": "images/ranklist_seled.png"
+            },
+            {
+                "pagePath": "pages/cart/cart",
+                "text": "购物车",
+                "iconPath": "images/cart.png",
+                "selectedIconPath": "images/cart_seled.png"
+            },
+            {
+                "pagePath": "pages/personal/personal",
+                "text": "我的",
+                "iconPath": "images/personal.png",
+                "selectedIconPath": "images/personal_seled.png"
+            }
+        ],
+        "position": "bottom"
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "downloadFile": 10000
+    },
+    "debug": true
+}

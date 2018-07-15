@@ -1,0 +1,37 @@
+.wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.wrap .icon {
+    width: 381rpx;
+    height: 322rpx;
+    background-image: url('http://newbuz.360buyimg.com/jingshop/wxappBridge/wxapp_bridge.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 280rpx auto 78rpx;
+}
+
+.text {
+    text-align: center;
+    font-size: 29rpx;
+}
+
+.nav-btn {
+    background-color: #1bac1a;
+    width: 300rpx;
+    text-align: center;
+    padding: 20rpx 0;
+    font-size: 26rpx;
+    color: #fff;
+    margin: 0 auto;
+    border-radius: 10rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 76rpx;
+    box-sizing: border-box;
+}

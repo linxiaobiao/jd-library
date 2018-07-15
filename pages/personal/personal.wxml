@@ -1,0 +1,95 @@
+<view class="wrapper">
+    <button bindgetuserinfo="toLogin" class="getuserinfo-btn" openType="getUserInfo" wx:if="{{!isLogined}}">
+        <view class="header">
+            <view class="photo">
+                <image src="{{defaultHeaderPng}}"></image>
+            </view>
+            <view class="p-info">
+                <view class="p-info-item">
+                    <text class="txt">登录/注册</text>
+                </view>
+            </view>
+            <text class="not-login"></text>
+        </view>
+    </button>
+    <view class="header" wx:else>
+        <view class="photo">
+            <image src="{{isLogined&&user&&user.imgUrl?user.imgUrl:defaultHeaderPng}}"></image>
+        </view>
+        <view class="p-info">
+            <view class="p-info-item">
+                <text class="txt">{{isLogined?user.petName:'登录/注册'}}</text>
+                <text class="icn icn-gender {{user.sex==2?'':user.sex==0?'male':'female'}}" wx:if="{{isLogined}}"></text>
+            </view>
+            <block wx:if="{{havePointsFloor}}">
+                <import src="./operatorPoints/operatorPoints.wxml"></import>
+                <template is="operatorPoints" data="{{isLogined:isLogined,user:user}}"></template>
+            </block>
+            <block wx:else>
+                <view class="p-info-item p-info-jingdou" wx:if="{{isLogined&&user.jingBean}}">
+                    <icon class="icon-jingdou"></icon>京豆{{user.jingBean}}</view>
+            </block>
+        </view>
+        <button bindgetuserinfo="logout" class="getuserinfo-btn btn-area" openType="getUserInfo">
+            <text class="txt">退出登录</text>
+        </button>
+    </view>
+    <view class="item-list" wx:if="{{!isLogined}}">
+        <button bindgetuserinfo="orderToLogin" class="getuserinfo-btn item" openType="getUserInfo">
+            <text class="txt" data-navtype="n-order">我的订单</text>
+            <text class="icn icn-right" data-navtype="n-order"></text>
+        </button>
+        <button bindgetuserinfo="appointmentToLogin" class="getuserinfo-btn item" openType="getUserInfo">
+            <text class="txt" data-navtype="n-appointment">我的预约</text>
+            <text class="icn icn-right" data-navtype="n-appointment"></text>
+        </button>
+        <button bindgetuserinfo="couponToLogin" class="getuserinfo-btn item" openType="getUserInfo">
+            <text class="txt" data-navtype="n-coupon">我的优惠券</text>
+            <text class="icn icn-right" data-navtype="n-coupon"></text>
+        </button>
+        <button bindgetuserinfo="serviceToLogin" class="getuserinfo-btn item" openType="getUserInfo">
+            <text class="txt" data-navtype="n-service">退换/售后</text>
+            <text class="icn icn-right" data-navtype="n-service"></text>
+        </button>
+        <view bindtap="jumpNav">
+            <view class="item" data-navtype="n-feedback">
+                <text class="txt" data-navtype="n-feedback">反馈</text>
+                <text class="icn icn-right" data-navtype="n-feedback"></text>
+            </view>
+            <block wx:if="{{haveAboutFloor}}">
+                <import src="./zdm/zdmAbout.wxml"></import>
+                <template is="zdmAbout" data></template>
+            </block>
+        </view>
+    </view>
+    <view bindtap="jumpNav" class="item-list" wx:else>
+        <view class="item" data-navtype="n-order">
+            <text class="txt" data-navtype="n-order">我的订单</text>
+            <text class="icn icn-right" data-navtype="n-order"></text>
+        </view>
+        <view class="item" data-navtype="n-appointment">
+            <text class="txt" data-navtype="n-appointment">我的预约</text>
+            <text class="icn icn-right" data-navtype="n-appointment"></text>
+        </view>
+        <view class="item" data-navtype="n-coupon">
+            <text class="txt" data-navtype="n-coupon">我的优惠券</text>
+            <text class="icn icn-right" data-navtype="n-coupon"></text>
+        </view>
+        <view class="item" data-navtype="n-service">
+            <text class="txt" data-navtype="n-service">退换/售后</text>
+            <text class="icn icn-right" data-navtype="n-service"></text>
+        </view>
+        <view class="item" data-navtype="n-feedback">
+            <text class="txt" data-navtype="n-feedback">反馈</text>
+            <text class="icn icn-right" data-navtype="n-feedback"></text>
+        </view>
+        <block wx:if="{{haveAboutFloor}}">
+            <import src="./zdm/zdmAbout.wxml"></import>
+            <template is="zdmAbout" data></template>
+        </block>
+    </view>
+</view>
+<view class="technical-support">
+    <image class="technical-support-icon" src="http://commonst.360buyimg.com/common/wx-images/JKP_logo.png"></image>
+    <view class="technical-support-text">京东开普勒提供技术支持</view>
+</view>

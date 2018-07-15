@@ -1,0 +1,84 @@
+<import src="../bookTemplate/bookTemplate.wxml"></import>
+<view class="content">
+    <template is="search" data="{{...searchdata}}" wx:if="{{search==1}}"></template>
+    <view class="search-words" wx:if="{{searchdata.bfocus}}">
+        <view class="history-box" wx:if="{{historyData.length}}">
+            <view class="history-title">历史搜索</view>
+            <view class="history-list">
+                <view class="history-item" wx:for="{{historyData}}" wx:for-index="idx" wx:key="{{idx}}">
+                    <view bindtap="search" bindtouchend="stopMoveItem" bindtouchmove="moveItem" bindtouchstart="startMoveItem" class="txt" data-hindex="{{idx}}" data-history="{{item}}" style="{{idx==hindex?hstyle:'left=30rpx;'}}">{{item}}</view>
+                    <view bindtap="deleteItem" class="del" data-hindex="{{idx}}">删除</view>
+                </view>
+            </view>
+            <view bindtap="clearHistory" class="clear-btn" hoverClass="clear-btn-hover">
+                <image></image>清空历史搜索
+        </view>
+        </view>
+    </view>
+    <block wx:if="{{!searchdata.bfocus}}">
+        <block wx:if="{{bgetproduct&&productList.length!=0}}">
+            <view class="filter-box">
+                <view bindtap="showProductBySort" class="filter-tab {{sort==''?'curr':''}}" data-sort="">综合</view>
+                <view bindtap="showProductBySort" class="filter-tab {{sort==1?'curr':''}}" data-sort="1">销量</view>
+                <view bindtap="showProductBySort" class="filter-tab {{sort==5?'curr':''}}" data-sort="5">新品</view>
+                <view bindtap="showProductBySort" class="filter-tab {{sort==2||sort==3?'curr':''}}" data-sort="{{priceSort}}">价格<view class="price-icon {{sort==3?'up':sort==2?'down':''}}"></view>
+                </view>
+            </view>
+            <scroll-view scrollY bindscroll="gotoScroll" bindscrolltolower="getMore" scrollTop="{{scrollTop}}" style="height: {{scrollHeight}}rpx">
+                <view class="product-list">
+                    <view bindtap="gotoProductDetail" class="product-item" data-wareid="{{productItem.wareId}}" wx:for="{{productList}}" wx:for-index="idx" wx:for-item="productItem" wx:key="productitem">
+                        <view class="product-image">
+                            <image mode="aspectFit" src="{{productItem.imageurl}}" wx:if="{{productItem.imageurl}}"></image>
+                            <image class="pimage" mode="aspectFit" src="{{productItem.imageurl}}" wx:if="{{!productItem.imageurl}}"></image>
+                            <view class="product-ext" wx:if="{{productItem.stockQuantity!=0}}">仅剩{{productItem.stockQuantity}}件</view>
+                            <view class="product-ext" wx:if="{{productItem.preSale}}">{{productItem.preSale?'预售':''}}</view>
+                            <view class="product-ext" wx:if="{{productItem.stockState}}">{{productItem.stockState?'无货':''}}</view>
+                        </view>
+                        <view class="product-info">
+                            <view class="product-title">{{productItem.wname}}</view>
+                            <view class="product-recommend">{{productItem.adword}}</view>
+                            <view class="product-author">{{productItem.author}}</view>
+                            <view class="product-price">
+                                <view class="price">
+                                    <view class="bi">¥</view>
+                                    <view class="big-price">{{productItem.bigPrice}}</view>
+                                    <view class="small-price">{{productItem.smallPrice}}</view>
+                                </view>
+                                <view class="coupon" wx:if="{{promotionitem}}" wx:for="{{productItem.promotionFlag}}" wx:for-index="promoidx" wx:for-item="promotionitem" wx:key="promotionlist">{{promotionitem}}</view>
+                                <view class="coupon" wx:if="{{productItem.upToSaving}}">{{productItem.upToSaving}}</view>
+                            </view>
+                            <view class="product-comment">
+                                <view class="tag" wx:if="{{productItem.self}}">{{productItem.self?'自营':''}}</view>
+                                <block wx:if="{{productItem.totalCount!='0'}}">
+                                    <view class="comment">{{productItem.totalCount}}条评价</view>
+                                    <view class="comment" wx:if="{{productItem.good}}">{{productItem.good}}好评</view>
+                                </block>
+                                <view class="comment" wx:if="{{productItem.totalCount=='0'}}">暂无评价</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+            <view class="product-nomore" wx:if="{{nomoreProduct}}">哈，到底啦~</view>
+            <view bindtap="gotop" class="gotop" wx:if="{{bShowTop}}"></view>
+        </block>
+        <block wx:if="{{!bgetproduct}}">
+            <view class="filter-box">
+                <view bindtap="showProductBySort" class="filter-tab {{sort==''?'curr':''}}" data-sort="">综合</view>
+                <view bindtap="showProductBySort" class="filter-tab {{sort==1?'curr':''}}" data-sort="1">销量</view>
+                <view bindtap="showProductBySort" class="filter-tab {{sort==5?'curr':''}}" data-sort="5">新品</view>
+                <view bindtap="showProductBySort" class="filter-tab {{sort==2||sort==3?'curr':''}}" data-sort="{{priceSort}}">价格<view class="price-icon {{sort==3?'up':sort==2?'down':''}}"></view>
+                </view>
+            </view>
+            <view class="product-null" style="height: 1100rpx;">
+                <image></image>
+                <view class="null-info2">玩命加载中~</view>
+            </view>
+        </block>
+        <view class="product-null" style="height: 1100rpx;" wx:if="{{bgetproduct&&productList.length==0}}">
+            <image class="null-icon"></image>
+            <view class="null-info">抱歉，没有找到符合条件的商品~</view>
+        </view>
+    </block>
+</view>
+<template is="confirm" data="{{...confirmdata}}"></template>

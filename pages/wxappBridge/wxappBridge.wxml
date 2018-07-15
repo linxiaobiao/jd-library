@@ -1,0 +1,8 @@
+<view class="wrap">
+    <view class="icon"></view>
+    <navigator appId="{{appId}}" class="nav-btn" extraData="{{extData}}" openType="navigate" path="{{path}}" target="miniProgram" version="{{version}}" wx:if="{{appId}}">点击跳转</navigator>
+    <view class="text" wx:else>
+        <view>稍后会跳转</view>
+        <view>需要稍等一下</view>
+    </view>
+</view>

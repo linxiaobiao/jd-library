@@ -1,0 +1,7 @@
+{
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f7f4f3",
+    "navigationBarTitleText": "京东图书",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
+}

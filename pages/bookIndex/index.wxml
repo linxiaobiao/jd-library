@@ -1,0 +1,62 @@
+<import src="../bookTemplate/bookTemplate.wxml"></import>
+<view class="content">
+    <template is="search" data="{{...searchdata}}"></template>
+    <view class="goods-box">
+        <view class="goods-title">
+            <view class="title">
+                <image></image>
+                <view class="t">精品推荐</view>
+                <image></image>
+            </view>
+            <view class="goods-page" wx:if="{{currGroupPageIdx}}">
+        {{currGroupPageIdx}}/10
+      </view>
+        </view>
+        <view class="goods-list">
+            <swiper bindchange="swiperChange" class="goods-swiper" current="{{currGroupPageForCurrent}}">
+                <block wx:for="{{productListArray}}" wx:for-index="idx" wx:for-item="productList" wx:key="productlistArray">
+                    <swiper-item bindtouchend="touchEnd" bindtouchmove="touchMove" bindtouchstart="touchStart" class="myswiper {{currGroupPage<idx*11+itemidx?'myrightswiper':currGroupPage==idx*11+itemidx?'mycurrswiper':'myleftswiper'}}" wx:for="{{productList}}" wx:for-index="itemidx" wx:for-item="productItem" wx:key="productlist">
+                        <view class="goods-item curr" wx:if="{{productItem.wareId}}">
+                            <image bindtap="gotoProductDetails" class="goods-pic" data-wareid="{{productItem.wareId}}" mode="aspectFit" src="{{productItem.images[0].kwxpath}}" wx:if="{{productItem.images[0].kwxpath}}"></image>
+                            <image bindtap="gotoProductDetails" class="goods-pic-null" data-wareid="{{productItem.wareId}}" mode="aspectFit" src="{{productItem.images[0].kwxpath}}" wx:if="{{!productItem.images[0].kwxpath}}"></image>
+                            <view bindtap="gotoProductDetails" class="good-title" data-wareid="{{productItem.wareId}}">{{productItem.wname}}</view>
+                            <view bindtap="gotoMoreList" class="good-author" data-author="{{productItem.bookInfo.author}}" wx:if="{{productItem.bookInfo.author}}">
+                                <view class="author">{{productItem.bookInfo.author}}</view>
+                                <image class="good-author-more"></image>
+                            </view>
+                            <view class="good-desc" wx:if="{{productItem.ad.adword}}">{{productItem.ad.adword}}</view>
+                            <view class="good-price">{{productItem.jdPrice==='暂无报价'?productItem.jdPrice:'¥'+productItem.jdPrice}}</view>
+                            <view bindtap="addCartFn" class="good-addcart" data-wareId="{{productItem.wareId}}" hoverClass="good-addcart-hover">
+                                <image></image>
+                                <view class="info">加入购物车</view>
+                            </view>
+                        </view>
+                        <view class="goods-item curr" wx:if="{{productItem.wloading}}">
+                            <image class="goods-pic-null" data-wareid="{{productItem.wareId}}" mode="aspectFit"></image>
+                            <view class="good-title" data-wareid="{{productItem.wareId}}">{{productItem.wname}}</view>
+                            <view class="good-author" data-author="{{productItem.wtip}}">
+                                <view class="author">{{productItem.wtip}}</view>
+                            </view>
+                            <view class="good-desc">{{productItem.ad.adword}}</view>
+                        </view>
+                        <view class="goods-item goods-error curr" wx:if="{{productItem.wnull}}">
+                            <image class="goods-null-icon"></image>
+                            <view class="error-title">{{productItem.wname}}</view>
+                            <view class="error-desc">{{productItem.wtip}}</view>
+                            <view bindtap="getAgain" class="goods-btn" hoverClass="goods-btn-hover">重新加载</view>
+                        </view>
+                        <view class="goods-item goods-more curr" wx:if="{{productItem.luanqibazao}}">
+                            <view class="rightTip" wx:if="{{rightTip}}">右滑查看上一组图书</view>
+                            <image class="more-icon"></image>
+                            <view class="more-title">发现更多好书</view>
+                            <view bindtap="findMorebooks" class="goods-btn" hoverClass="goods-btn-hover">去找书</view>
+                            <view class="leftTip" wx:if="{{leftTip&&!leftTipOver}}">左滑查看下一组图书</view>
+                            <view class="leftTip" wx:if="{{leftTip&&leftTipOver}}">已经到头了~</view>
+                        </view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+    </view>
+</view>
+<template is="toast" data="{{...toastData}}" wx:if="{{toastIsShow}}"></template>

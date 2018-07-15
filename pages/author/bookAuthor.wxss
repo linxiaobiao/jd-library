@@ -1,0 +1,29 @@
+.prod-author {
+    padding: 20rpx 0;
+}
+
+.prod-author .base-txt {
+    width: 60%;
+    height: 30rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.more-worklist {
+    float: right;
+    margin-top: -32rpx;
+    display: flex;
+    margin-right: 20rpx;
+    font-size: 26rpx;
+    align-items: center;
+    color: #81838e;
+}
+
+.more-worklist .icon-arrow-right {
+    margin-left: 18rpx;
+}
+
+.prod-author .part-note-msg {
+    float: left;
+}
